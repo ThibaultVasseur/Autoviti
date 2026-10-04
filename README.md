@@ -12,7 +12,9 @@
 ![n8n](https://img.shields.io/badge/n8n-EA4B71?logo=n8n&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-635BFF?logo=stripe&logoColor=white)
 
-[![Voir le film de présentation d'AutoViti (44 s)](docs/video/poster.jpg)](docs/video/autoviti-film.mp4)
+
+https://github.com/user-attachments/assets/a6592a9d-1e1d-4754-9216-f24bc44c0a83
+
 
 <sub>▶ <b>Film de présentation · 44 s</b> · motion design réalisé en code avec Remotion (React)</sub>
 
