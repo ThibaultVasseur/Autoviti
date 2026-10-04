@@ -12,7 +12,9 @@
 ![n8n](https://img.shields.io/badge/n8n-EA4B71?logo=n8n&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-635BFF?logo=stripe&logoColor=white)
 
-![Page d'accueil d'AutoViti](docs/images/landing-hero.png)
+[![Voir le film de présentation d'AutoViti (44 s)](docs/video/poster.jpg)](docs/video/autoviti-film.mp4)
+
+<sub>▶ <b>Film de présentation · 44 s</b> · motion design réalisé en code avec Remotion (React)</sub>
 
 </div>
 
@@ -24,6 +26,8 @@ et les automatismes tournent pendant qu'il travaille.
 Le produit a deux faces : l'**espace vigneron**, où le domaine est piloté au
 quotidien, et l'**espace agence**, où se gèrent les clients, les workflows, la
 facturation et la rentabilité.
+
+![Page d'accueil d'AutoViti](docs/images/landing-hero.png)
 
 | | |
 |---|---|
