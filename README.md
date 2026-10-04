@@ -46,27 +46,10 @@ Le vigneron écrit ou dicte : *« Fais un devis de 60 Brut Réserve pour le Bist
 Port »*. L'assistant retrouve le client, lit le vrai prix et le stock de la cuvée,
 puis prépare le devis. **Rien n'est créé tant que le vigneron n'a pas confirmé.**
 
-```mermaid
-sequenceDiagram
-    actor V as Vigneron
-    participant UI as Interface
-    participant API as Route assistant
-    participant LLM as gpt-4o-mini
-    participant DB as Postgres (RLS)
-
-    V->>UI: « Fais un devis de 60 Brut Réserve… »
-    UI->>API: 12 derniers messages
-    loop 5 tours maximum
-        API->>LLM: messages + 9 outils
-        LLM-->>API: search_contacts, search_products
-        API->>DB: requêtes avec la session du vigneron
-        DB-->>API: uniquement SES données
-    end
-    LLM-->>API: propose_quote(contact_id, lignes…)
-    API-->>UI: proposition, rien n'est écrit
-    V->>UI: Confirme
-    UI->>DB: route Devis existante (validation Zod, contrôle du stock)
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/diagram-assistant-dark.png">
+  <img alt="Séquence : le vigneron demande un devis, l'assistant interroge le modèle et la base sous RLS en 5 tours maximum, puis renvoie une proposition que le vigneron confirme avant toute écriture" src="docs/images/diagram-assistant-light.png">
+</picture>
 
 Choix de conception :
 
@@ -125,21 +108,10 @@ traitements idempotents pour pouvoir être rejoués sans risque.
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    U["Vigneron · Agence<br/>Ouvrier · Client final"] --> MW
-
-    subgraph APP["Next.js 16 — VPS Docker + Caddy"]
-        MW["Middleware<br/>auth + accès par formule"] --> API["Routes API<br/>Zod · rate-limit"]
-        API --> AI["Briques IA"]
-    end
-
-    API --> DB[("Supabase Postgres<br/>RLS partout")]
-    AI --> OAI["OpenAI<br/>gpt-4o · gpt-4o-mini"]
-    API <-->|webhooks HMAC| N8N["n8n<br/>28 workflows"]
-    API <-->|webhooks signés| STR["Stripe Connect"]
-    N8N --> OUT["E-mail · Telegram · PDF"]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/diagram-architecture-dark.png">
+  <img alt="Architecture : les utilisateurs passent par le middleware Next.js puis les routes API, reliées à Supabase Postgres, OpenAI, n8n et Stripe Connect ; n8n envoie e-mails, messages Telegram et PDF" src="docs/images/diagram-architecture-light.png" width="620">
+</picture>
 
 ![Les modules d'AutoViti](docs/images/landing-modules.png)
 
