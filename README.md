@@ -37,8 +37,8 @@ facturation et la rentabilité.
 | 36 migrations SQL, RLS sur toutes les tables | 28 workflows n8n |
 | 65 tests automatisés | Déployé sur VPS (Docker + Caddy), supervisé par Sentry |
 
-> **Pourquoi le code n'est pas public ?** AutoViti est un produit commercial utilisé
-> par de vrais domaines. Le dépôt principal reste privé. Celui-ci présente
+> **Pourquoi le code n'est pas public ?** AutoViti est un produit commercial en
+> production. Le dépôt principal reste privé. Celui-ci présente
 > l'architecture, les choix techniques et des [extraits de code](code/) tels qu'ils
 > tournent en production. Je fais volontiers une visite du code complet en entretien.
 
@@ -123,7 +123,7 @@ traitements idempotents pour pouvoir être rejoués sans risque.
 
 ## Ingénierie de production
 
-Ce qui sépare une démo d'un produit sur lequel des gens comptent :
+Ce qui sépare une démo d'un produit prêt pour la production :
 
 - **Sécurité multi-clients.** RLS sur chaque table, contrôles d'accès revérifiés
   dans chaque route API (pas seulement dans le middleware). Un audit m'a fait
